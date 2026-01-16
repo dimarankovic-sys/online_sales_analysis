@@ -1,11 +1,18 @@
 from product import Product
 from product_manager import ProductManager
+from cart import Cart
+import random
 
 manager = ProductManager()
 
-manager.add_product(Product("Laptop", 1200, 5))
-manager.add_product(Product("Miš", 20, 10))
-manager.add_product(Product("Tastatura", 50, 7))
+manager.add_product(Product("Laptop", 1200, 3))
+manager.add_product(Product("Telefon", 800, 4))
+manager.add_product(Product("Slusalice", 150, 6))
 
-manager.display_products()
-print("Ukupna vrednost inventara:", manager.total_inventory_value())
+cart = Cart()
+
+for product in random.sample(manager.products, 3):
+    cart.add_to_cart(product)
+
+cart.display_cart()
+print("Ukupno za naplatu:", cart.total_price())
